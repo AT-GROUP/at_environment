@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{014fbce0-e081-48f5-b453-d8279d62dd44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\project">
+      <UniqueIdentifier>{e6444ef8-3a76-40e8-b785-9a8a3645c8d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\edfd">
+      <UniqueIdentifier>{ae0e6b90-220a-49e6-aec0-8fec548d05dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\plugin">
+      <UniqueIdentifier>{32ba8166-b19e-4440-a11f-9fc7bfefe3e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\architecture">
+      <UniqueIdentifier>{3f0f18e8-9cc2-460f-a4b5-7be8cb3f1943}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\utils">
+      <UniqueIdentifier>{496c6404-1d78-46d6-afbb-34f40d2c4134}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\plan">
+      <UniqueIdentifier>{a9713b95-4f8d-4bfc-b066-ce5ddec4d9f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\documents">
+      <UniqueIdentifier>{2f27bc84-e29e-4849-8c6a-5b1bdcb5cf7f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\ATCore\AError.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ATCore\ANamedObject.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ATCore\project\AProject.cpp">
+      <Filter>src\project</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ATCore\project\AProjectNode.cpp">
+      <Filter>src\project</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ATCore\ALogManager.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ATCore\plugin\APluginManager.cpp">
+      <Filter>src\plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ATCore\plugin\APlugin.cpp">
+      <Filter>src\plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ATCore\ACommandExecutor.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ATCore\architecture\AArchitectureDocument.cpp">
+      <Filter>src\architecture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ATCore\edfd\EDFDDocument.cpp">
+      <Filter>src\edfd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ATCore\ADocument.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ATCore\utils\helpers.cpp">
+      <Filter>src\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ATCore\edfd\DFDConnection.cpp">
+      <Filter>src\edfd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ATCore\edfd\DFDElement.cpp">
+      <Filter>src\edfd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ATCore\project\AProjectManager.cpp">
+      <Filter>src\project</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ATCore\architecture\AArchElement.cpp">
+      <Filter>src\architecture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ATCore\utils\geometry.cpp">
+      <Filter>src\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ATCore\plan\APlan.cpp">
+      <Filter>src\plan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ATCore\architecture\AArchElementGroup.cpp">
+      <Filter>src\architecture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ATCore\architecture\AArchElementFactory.cpp">
+      <Filter>src\architecture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ATCore\architecture\APIKInterface.cpp">
+      <Filter>src\architecture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ATCore\architecture\AArchLink.cpp">
+      <Filter>src\architecture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ATCore\edfd\DFDAnchor.cpp">
+      <Filter>src\edfd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ATCore\documents\AKBDocument.cpp">
+      <Filter>src\documents</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\ATCore\AError.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ATCore\ANamedObject.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ATCore\config.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ATCore\project\AProject.h">
+      <Filter>src\project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ATCore\project\AProjectNode.h">
+      <Filter>src\project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ATCore\ASingleton.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ATCore\ALogManager.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ATCore\ADelegatedObject.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ATCore\plugin\APlugin.h">
+      <Filter>src\plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ATCore\plugin\APluginManager.h">
+      <Filter>src\plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ATCore\ACommandExecutor.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ATCore\architecture\AArchitectureDocument.h">
+      <Filter>src\architecture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ATCore\edfd\EDFDDocument.h">
+      <Filter>src\edfd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ATCore\ADocument.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ATCore\utils\helpers.h">
+      <Filter>src\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ATCore\edfd\DFDConnection.h">
+      <Filter>src\edfd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ATCore\edfd\DFDElement.h">
+      <Filter>src\edfd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ATCore\project\AProjectManager.h">
+      <Filter>src\project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ATCore\architecture\AArchElement.h">
+      <Filter>src\architecture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ATCore\utils\geometry.h">
+      <Filter>src\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ATCore\plan\APlan.h">
+      <Filter>src\plan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ATCore\architecture\AArchElementGroup.h">
+      <Filter>src\architecture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ATCore\architecture\AArchElementFactory.h">
+      <Filter>src\architecture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ATCore\architecture\APIKInterface.h">
+      <Filter>src\architecture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ATCore\architecture\AArchLink.h">
+      <Filter>src\architecture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ATCore\edfd\DFDAnchor.h">
+      <Filter>src\edfd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ATCore\documents\AKBDocument.h">
+      <Filter>src\documents</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -107,13 +107,13 @@ AError ATPlanner::buildDetailPlan()
 {
 	AError res;
 
-	//Check that generalized plan is built
+	/*Check that generalized plan is built
 	if(!m_pCurrentPlan)
 		res = buildGeneralizedPlan();
 	if(!res.OK())
-		return res;
+		return res;*/
 
-	//Get architecture document
+	/*Get architecture document
 	AError err;
 	const ADocumentProjectNode* old_arch_doc = m_pProject->architectureDocument(&err);
 	if(!err.OK())
@@ -132,6 +132,34 @@ AError ATPlanner::buildDetailPlan()
 
 	//Solve task with adapter, based on generalized plan and architecture
 	APlan * new_plan = adapter->buildDetailPlan(m_pCurrentPlan, arch_doc.get());
+	*/
+
+	APlan * new_plan = new APlan;
+	
+	AGeneralTask * gtask= new AGeneralTask(1, DFDElement::Type::NFFunction, "IES");
+	
+	std::vector<ASubTask*> stasks;
+	
+	ASubTask * stask = new ASubTask(gtask, "Scenario dialog");
+	stask->setExecutionString("verify");
+	gtask->addSubTask(stask);
+	stasks.push_back(stask);
+
+	stask = new ASubTask(gtask, "Knowledge acquiring");
+	stask->setExecutionString("acquire_expert");
+	gtask->addSubTask(stask);
+	stasks.push_back(stask);
+
+	stask = new ASubTask(gtask, "Convertation into KB");
+	stask->setExecutionString("acquire_database");
+	gtask->addSubTask(stask);
+	stasks.push_back(stask);
+
+	new_plan->addTask(gtask);
+	DisplayTaskGroup * dg = new DisplayTaskGroup;
+	dg->general_task = gtask;
+	dg->sub_tasks = stasks;
+	new_plan->addDisplayGroup(*dg);
 
 	//Show plan and make current
 	setPlan(new_plan);

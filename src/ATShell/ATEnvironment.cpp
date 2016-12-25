@@ -3,7 +3,9 @@
 #include "AQNewProjectDialog.h"
 #include "AQNewFileDialog.h"
 #include "ATApplication.h"
+#include "ASDPWidget.h"
 #include "APluginsWidget.h"
+#include <ATCore/sdp/SDPManager.h>
 #include <ATCore/project/AProject.h>
 #include <ATCore/project/AProjectNode.h>
 #include <ATCore/ADocument.h>
@@ -13,6 +15,7 @@
 //#include "editors/schemes_editor/AQSchemesEditor.h"
 #include <QtCore/QFileInfo>
 #include <QtCore/QDir>
+#include <QtCore/QDebug>
 #include <QtWidgets/QMdiSubWindow>
 #include <QtWidgets/QFileDialog>
 #include <QtWidgets/QMessageBox>
@@ -79,6 +82,21 @@ ATEnvironment::ATEnvironment(ATApplication * app, QWidget *parent)
 	connect(ui.actionPlugins, &QAction::triggered, [=](){
 			auto wdg = new APluginsWidget(m_pApplication);
 			wdg->show();
+	});
+
+	connect(ui.actionSDP, &QAction::triggered, [=]() {
+		QDir dir(QDir::currentPath() + "/sdps");
+		dir.setFilter(QDir::Files);
+		dir.setNameFilters(QStringList("*.sdp"));
+		std::vector<std::string> pathes;
+		foreach(QFileInfo file, dir.entryInfoList())
+		{
+			auto path = dir.absoluteFilePath(file.fileName()).toStdString();
+			pathes.push_back(path);
+		}
+		SDPManager * sdpm = new SDPManager(pathes);
+		auto wdg = new ASDPWidget(sdpm);
+		wdg->show();
 	});
 
 	connect(ui.actionBuildProject, &QAction::triggered, [=](){
@@ -197,7 +215,7 @@ void ATEnvironment::openProject(const std::string & path)
 void ATEnvironment::openProject()
 {
 	QString file_name = QFileDialog::getOpenFileName(this, tr("Open project"),
-                                                 "D:",
+                                                 "C:",
                                                  tr("AT Project Files (*.atprj);; All Files (*)"));
 	openProject(file_name.toStdString());
 }
@@ -205,7 +223,7 @@ void ATEnvironment::openProject()
 void ATEnvironment::openFile()
 {
 	QString file_name = QFileDialog::getOpenFileName(this, tr("Open file"),
-                                                 "D:",
+                                                 "C:",
                                                  tr("All Files (*)"));
 	if(file_name != "")
 		openFile(file_name.toStdString());

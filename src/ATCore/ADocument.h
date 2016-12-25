@@ -4,15 +4,19 @@
 
 #include "config.h"
 #include "AError.h"
+#include <algorithm>
+#include <sstream>
 
 class _xmlNode;
 
 class AT_CORE_API ADocument
 {
 public:
-	enum class Type {EDFD, ArchitectureMaket, NotSystem};
+	enum class Type {EDFD, ArchitectureMaket, SDP, NotSystem};
 
 	const std::string & fileName() const;
+
+	bool to_bool(std::string str);
 
 	AError save();
 	AError saveToFile(const std::string & file_name);

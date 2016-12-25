@@ -8,6 +8,8 @@
 
 #include <QtWidgets/QFileDialog.h>
 
+#include "SDPWidget.h"
+
 //using namespace BlockScheme;
 using namespace std;
 
@@ -40,6 +42,8 @@ EDFDEditor::EDFDEditor(AGUIEditorPlugin * _plug, QWidget *parent)
     connect(ui.ASaveAs, SIGNAL(triggered()), this, SLOT(SaveAs()));
     connect(ui.ALoad, SIGNAL(triggered()), this, SLOT(Load()));
     connect(ui.AExit, SIGNAL(triggered()), this, SLOT(close()));
+	connect(ui.ACover, SIGNAL(triggered()), this, SLOT(Cover()));
+	connect(ui.sdpListWidget, SIGNAL(covered(std::vector<int>)), ui.gvDocument, SLOT(covered(std::vector<int>)));
 }
 
 EDFDEditor::~EDFDEditor()
@@ -99,6 +103,7 @@ void EDFDEditor::updateScene()
 			
 			el->setPos(e->Mouse_pos.x(), e->Mouse_pos.y());
 			ui.gvDocument->scene()->addItem(el);
+			ui.gvDocument->add(e->id(), el);
 			elem_graph_dictionary[e] = el;
 		}
 	}
@@ -162,3 +167,31 @@ void EDFDEditorPlugin::openFile(ADocument * file)
 	updateScene();*/
 }
 
+
+void EDFDEditor::Cover()
+{
+	//Load existing file
+
+
+	document()->saveToFile(QDir::currentPath().toStdString()); // send to planner
+	
+	Sleep(1);
+
+	// deser result
+
+	static QTextCodec *codec = QTextCodec::codecForName("Windows-1251");
+
+	std::vector<int> i;
+	i.push_back(1);
+	i.push_back(2);
+	i.push_back(3);
+	i.push_back(4);
+	ui.sdpListWidget->add(codec->toUnicode("Построение статической ИЭС"), i);
+	std::vector<int> i2;	
+	i2.push_back(5);
+	i2.push_back(6);
+	i2.push_back(7);
+	i2.push_back(8);
+	i2.push_back(9);
+	ui.sdpListWidget->add(codec->toUnicode("Проектирование БД"), i2);
+}

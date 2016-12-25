@@ -4,6 +4,7 @@
 
 #include <QtWidgets/QApplication>
 #include <ATCore/plugin/APluginManager.h>
+#include <ATCore/sdp/SDPManager.h>
 #include <ATCore/ACommandExecutor.h>
 #include <ATPlanner/ATPlanner.h>
 

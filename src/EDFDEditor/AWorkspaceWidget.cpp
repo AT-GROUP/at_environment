@@ -131,11 +131,28 @@ void AWorkspaceWidget::dropEvent(QDropEvent *event)
 		{
 			new_gr_el->setPos(new_el->Mouse_pos.x(), new_el->Mouse_pos.y());
 			Ascene->addItem(new_gr_el);
-
 			QObject::connect(new_gr_el, &DFDGraphicsElement::newConnectionRequested, this, &AWorkspaceWidget::createConnection);
+			add(new_el->id(), new_gr_el);
 		}
     }
     event->acceptProposedAction();
+}
+
+void AWorkspaceWidget::add(int id, DFDGraphicsElement* el) {
+	m_IdMap.insert(std::pair<int, DFDGraphicsElement*>(id, el));
+}
+
+void AWorkspaceWidget::covered(std::vector<int> i)
+{
+	for (auto j : m_IdMap) {
+		j.second->setUncovered();
+	}
+	for (auto j : i) {
+		auto el = m_IdMap.find(j);
+		if (el != m_IdMap.end()) {
+			el->second->setCovered();
+		}
+	}
 }
 
 void AWorkspaceWidget::dragEnterEvent(QDragEnterEvent *event)

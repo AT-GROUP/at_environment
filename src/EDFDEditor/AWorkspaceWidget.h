@@ -60,8 +60,11 @@ public:
         }
 	}
 
+	void add(int id, DFDGraphicsElement * el);
+
 public slots:
 	void createConnection(DFDGraphicsElement * src, DFDGraphicsElement * dest);
+	void covered(std::vector<int> i);
 protected:
     void dragEnterEvent(QDragEnterEvent *event);
     void dragMoveEvent(QDragMoveEvent *event);
@@ -70,6 +73,7 @@ protected:
 
 private:
 	std::shared_ptr<EDFDDocument> m_pDoc;
+	std::map <int, DFDGraphicsElement*> m_IdMap;
 };
 
 #endif // AWORKSPACEWIDGET_H

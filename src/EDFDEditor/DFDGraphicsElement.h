@@ -76,6 +76,9 @@ public:
 
 	void addConnection(DFDGraphicsConnection *connection);
 
+	void DFDGraphicsElement::setCovered();
+	void DFDGraphicsElement::setUncovered();
+
 protected:
 	virtual void contextMenuEvent(QGraphicsSceneContextMenuEvent *event);
 	QVariant itemChange(GraphicsItemChange change, const QVariant &value);

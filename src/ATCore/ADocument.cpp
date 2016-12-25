@@ -12,6 +12,15 @@ const std::string & ADocument::fileName() const
 	return mFileName;
 }
 
+bool ADocument::to_bool(std::string str)
+{
+	std::transform(str.begin(), str.end(), str.begin(), ::tolower);
+	std::istringstream is(str);
+	bool b;
+	is >> std::boolalpha >> b;
+	return b;
+}
+
 AError ADocument::save()
 {
 	return saveToFile(mDirectory + "/" + mFileName);

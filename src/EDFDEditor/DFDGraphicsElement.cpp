@@ -85,6 +85,16 @@ void DFDGraphicsElement::changeDe()
 	this->m_pObject->mDetalization.document_name = fname.toStdString();
 }
 
+void DFDGraphicsElement::setCovered()
+{
+	setSelected(true);
+}
+
+void DFDGraphicsElement::setUncovered()
+{
+	setSelected(false);
+}
+
 void DFDGraphicsElement::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 {
     menu = new QMenu;

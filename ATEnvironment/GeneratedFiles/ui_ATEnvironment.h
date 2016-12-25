@@ -45,6 +45,7 @@ public:
     QAction *actionOpenFile;
     QAction *actionBuildProject;
     QAction *actionBuildCleanProject;
+    QAction *actionSDP;
     QWidget *centralWidget;
     QHBoxLayout *horizontalLayout;
     QMdiArea *mdiArea;
@@ -99,6 +100,8 @@ public:
         actionBuildProject->setObjectName(QStringLiteral("actionBuildProject"));
         actionBuildCleanProject = new QAction(ATEnvironmentClass);
         actionBuildCleanProject->setObjectName(QStringLiteral("actionBuildCleanProject"));
+        actionSDP = new QAction(ATEnvironmentClass);
+        actionSDP->setObjectName(QStringLiteral("actionSDP"));
         centralWidget = new QWidget(ATEnvironmentClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         horizontalLayout = new QHBoxLayout(centralWidget);
@@ -117,7 +120,7 @@ public:
         ATEnvironmentClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(ATEnvironmentClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 997, 18));
+        menuBar->setGeometry(QRect(0, 0, 997, 21));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QStringLiteral("menuFile"));
         menuNew = new QMenu(menuFile);
@@ -185,6 +188,7 @@ public:
         menuOpen->addAction(actionOpenFile);
         menuHelp->addAction(actionAbout);
         menuTools->addAction(actionPlugins);
+        menuTools->addAction(actionSDP);
         menuBuild->addAction(actionBuildProject);
         menuBuild->addAction(actionBuildCleanProject);
 
@@ -210,6 +214,7 @@ public:
         actionOpenFile->setText(QApplication::translate("ATEnvironmentClass", "File...", 0));
         actionBuildProject->setText(QApplication::translate("ATEnvironmentClass", "Build Project", 0));
         actionBuildCleanProject->setText(QApplication::translate("ATEnvironmentClass", "Clean", 0));
+        actionSDP->setText(QApplication::translate("ATEnvironmentClass", "SDP", 0));
         menuFile->setTitle(QApplication::translate("ATEnvironmentClass", "File", 0));
         menuNew->setTitle(QApplication::translate("ATEnvironmentClass", "New", 0));
         menuOpen->setTitle(QApplication::translate("ATEnvironmentClass", "Open", 0));

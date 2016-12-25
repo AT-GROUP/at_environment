@@ -25,6 +25,7 @@
 #include <QtWidgets/QWidget>
 #include "ADrawWidget.h"
 #include "AWorkspaceWidget.h"
+#include "sdpwidget.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -37,18 +38,23 @@ public:
     QAction *ALoad;
     QAction *AExit;
     QAction *ANewFile;
+    QAction *ACover;
     QWidget *centralWidget;
     QHBoxLayout *horizontalLayout;
     AWorkspaceWidget *gvDocument;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QMenu *menuHelp;
+    QMenu *menuSDP;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
     QDockWidget *dockWidget;
     QWidget *dockWidgetContents;
     QVBoxLayout *verticalLayout;
     ADrawWidget *listWidget;
+    QDockWidget *sdpDockWidget;
+    QWidget *dockWidgetContents_2;
+    SDPWidget *sdpListWidget;
 
     void setupUi(QMainWindow *EDFDEditor)
     {
@@ -67,6 +73,8 @@ public:
         AExit->setObjectName(QStringLiteral("AExit"));
         ANewFile = new QAction(EDFDEditor);
         ANewFile->setObjectName(QStringLiteral("ANewFile"));
+        ACover = new QAction(EDFDEditor);
+        ACover->setObjectName(QStringLiteral("ACover"));
         centralWidget = new QWidget(EDFDEditor);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         horizontalLayout = new QHBoxLayout(centralWidget);
@@ -82,11 +90,13 @@ public:
         EDFDEditor->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(EDFDEditor);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1052, 18));
+        menuBar->setGeometry(QRect(0, 0, 1052, 21));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QStringLiteral("menuFile"));
         menuHelp = new QMenu(menuBar);
         menuHelp->setObjectName(QStringLiteral("menuHelp"));
+        menuSDP = new QMenu(menuBar);
+        menuSDP->setObjectName(QStringLiteral("menuSDP"));
         EDFDEditor->setMenuBar(menuBar);
         mainToolBar = new QToolBar(EDFDEditor);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -105,13 +115,30 @@ public:
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         listWidget = new ADrawWidget(dockWidgetContents);
         listWidget->setObjectName(QStringLiteral("listWidget"));
+        listWidget->setMinimumSize(QSize(0, 192));
+        listWidget->setMaximumSize(QSize(16777215, 192));
 
-        verticalLayout->addWidget(listWidget);
+        verticalLayout->addWidget(listWidget, 0, Qt::AlignTop);
 
         dockWidget->setWidget(dockWidgetContents);
         EDFDEditor->addDockWidget(static_cast<Qt::DockWidgetArea>(1), dockWidget);
+        sdpDockWidget = new QDockWidget(EDFDEditor);
+        sdpDockWidget->setObjectName(QStringLiteral("sdpDockWidget"));
+        sdpDockWidget->setEnabled(true);
+        sdpDockWidget->setMinimumSize(QSize(256, 658));
+        dockWidgetContents_2 = new QWidget();
+        dockWidgetContents_2->setObjectName(QStringLiteral("dockWidgetContents_2"));
+        dockWidgetContents_2->setEnabled(true);
+        sdpListWidget = new SDPWidget(dockWidgetContents_2);
+        sdpListWidget->setObjectName(QStringLiteral("sdpListWidget"));
+        sdpListWidget->setEnabled(true);
+        sdpListWidget->setGeometry(QRect(0, 0, 256, 441));
+        sdpListWidget->setMaximumSize(QSize(16777215, 441));
+        sdpDockWidget->setWidget(dockWidgetContents_2);
+        EDFDEditor->addDockWidget(static_cast<Qt::DockWidgetArea>(1), sdpDockWidget);
 
         menuBar->addAction(menuFile->menuAction());
+        menuBar->addAction(menuSDP->menuAction());
         menuBar->addAction(menuHelp->menuAction());
         menuFile->addAction(ANewFile);
         menuFile->addAction(ASave);
@@ -120,6 +147,7 @@ public:
         menuFile->addSeparator();
         menuFile->addAction(AExit);
         menuHelp->addAction(actionAbout);
+        menuSDP->addAction(ACover);
 
         retranslateUi(EDFDEditor);
 
@@ -135,8 +163,10 @@ public:
         ALoad->setText(QApplication::translate("EDFDEditor", "Load()", 0));
         AExit->setText(QApplication::translate("EDFDEditor", "Exit", 0));
         ANewFile->setText(QApplication::translate("EDFDEditor", "New File", 0));
+        ACover->setText(QApplication::translate("EDFDEditor", "Cover", 0));
         menuFile->setTitle(QApplication::translate("EDFDEditor", "File", 0));
         menuHelp->setTitle(QApplication::translate("EDFDEditor", "Help", 0));
+        menuSDP->setTitle(QApplication::translate("EDFDEditor", "SDP", 0));
     } // retranslateUi
 
 };

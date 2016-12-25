@@ -29,6 +29,7 @@ public:
 public slots:
     void SaveAs();
     void Load();
+	void Cover();
 
 private:
 	Ui::EDFDEditor ui;
